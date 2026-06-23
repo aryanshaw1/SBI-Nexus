@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, String
 from database.connection import Base
 
 
-class Profile(Base):
-    __tablename__ = "profiles"
+class AgentLog(Base):
+    __tablename__ = "agent_logs"
 
     id = Column(
         Integer,
@@ -17,27 +17,17 @@ class Profile(Base):
         nullable=False
     )
 
-    full_name = Column(
+    agent_name = Column(
         String,
         nullable=False
     )
 
-    occupation = Column(
+    action = Column(
         String,
-        nullable=True
+        nullable=False
     )
 
-    annual_income = Column(
+    status = Column(
         String,
-        nullable=True
-    )
-
-    risk_profile = Column(
-        String,
-        nullable=True
-    )
-
-    financial_goal = Column(
-        String,
-        nullable=True
+        default="COMPLETED"
     )

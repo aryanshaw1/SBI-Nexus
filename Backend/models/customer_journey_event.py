@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, String
 from database.connection import Base
 
 
-class Profile(Base):
-    __tablename__ = "profiles"
+class CustomerJourneyEvent(Base):
+    __tablename__ = "customer_journey_events"
 
     id = Column(
         Integer,
@@ -17,27 +17,17 @@ class Profile(Base):
         nullable=False
     )
 
-    full_name = Column(
+    event_type = Column(
         String,
         nullable=False
     )
 
-    occupation = Column(
+    workflow_stage = Column(
         String,
-        nullable=True
+        nullable=False
     )
 
-    annual_income = Column(
-        String,
-        nullable=True
-    )
-
-    risk_profile = Column(
-        String,
-        nullable=True
-    )
-
-    financial_goal = Column(
+    event_value = Column(
         String,
         nullable=True
     )
