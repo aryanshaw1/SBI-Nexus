@@ -3,6 +3,6 @@ from pydantic import BaseModel
 class ProfileCreate(BaseModel):
     full_name: str
     occupation: str
-    income: str
+    annual_income: float
     risk_profile: str
-    investment_goal: str
+    financial_goal: str

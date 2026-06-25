@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String , Float
 
 from database.connection import Base
 
@@ -28,7 +28,7 @@ class Profile(Base):
     )
 
     annual_income = Column(
-        String,
+        Float,
         nullable=True
     )
 

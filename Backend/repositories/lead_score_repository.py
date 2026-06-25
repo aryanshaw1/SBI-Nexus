@@ -1,22 +1,17 @@
-from sqlalchemy.orm import Session
-
 from models.lead_score import LeadScore
 
 
-def create_lead_score(
-    db: Session,
-    user_id: int,
-    score: int,
-    category: str
-):
-    lead = LeadScore(
-        user_id=user_id,
-        score=score,
-        category=category
+def create_lead_score(db, data):
+
+    lead_score = LeadScore(
+        user_id=data.user_id,
+        score=data.score,
+        category=data.category,
+        persona=data.persona
     )
 
-    db.add(lead)
+    db.add(lead_score)
     db.commit()
-    db.refresh(lead)
+    db.refresh(lead_score)
 
-    return lead
+    return lead_score

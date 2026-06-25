@@ -1,18 +1,20 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from database.connection import get_db
+from schemas.profile import ProfileCreate
+from repositories.profile_repository import create_profile
 
 router = APIRouter()
 
-@router.get("/me")
-def get_profile():
+@router.post("/profiles")
+def create_customer_profile(
+    profile: ProfileCreate,
+    db: Session = Depends(get_db)
+):
+    result = create_profile(db, profile)
 
     return {
-        "name": "Aryan Shaw",
-        "role": "customer"
-    }
-
-@router.get("/test")
-def test_profile():
-
-    return {
-        "message": "Profile API Working"
+        "success": True,
+        "profile_id": result.id
     }

@@ -1,30 +1,25 @@
-def calculate_lead_score(
-    income,
-    occupation,
-    goal
-):
-    score = 50
+def calculate_lead_score(income, occupation, goal):
 
-    if income > 1000000:
+    score = 0
+
+    if income >= 1000000:
+        score += 30
+
+    elif income >= 500000:
         score += 20
 
-    if occupation.lower() == "engineer":
+    else:
         score += 10
 
-    if goal.lower() == "investment":
+    if occupation:
         score += 20
 
-    if score >= 80:
-        category = "Hot Lead"
-    elif score >= 60:
-        category = "Warm Lead"
-    else:
-        category = "Cold Lead"
+    if goal:
+        score += 20
 
-    persona = "Growth-Oriented Investor"
+    score += 30
 
     return {
-        "score": score,
-        "category": category,
-        "persona": persona
+        "score": min(score, 100),
+        "category": "Hot Lead" if score >= 70 else "Warm Lead"
     }

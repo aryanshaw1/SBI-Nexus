@@ -6,11 +6,8 @@ router = APIRouter()
 
 @router.post("/score")
 def score_lead(data: LeadInput):
-
-    result = calculate_lead_score(
+    return calculate_lead_score(
         data.income,
         data.occupation,
         data.goal
     )
-
-    return result
